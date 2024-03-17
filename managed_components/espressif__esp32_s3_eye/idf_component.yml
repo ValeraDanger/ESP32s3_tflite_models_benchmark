@@ -1,0 +1,22 @@
+dependencies:
+  button:
+    public: true
+    version: '>=2.5,<4.0'
+  esp32-camera:
+    public: true
+    version: ^2.0.2
+  esp_codec_dev:
+    public: true
+    version: ^1
+  espressif/esp_lvgl_port:
+    public: true
+    version: ^1
+  idf:
+    version: '>=4.4.5'
+  lvgl/lvgl:
+    version: ^8
+description: Board Support Package for ESP32-S3-EYE
+targets:
+- esp32s3
+url: https://github.com/espressif/esp-bsp/tree/master/bsp/esp32_s3_eye
+version: 3.0.4
