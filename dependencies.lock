@@ -1,0 +1,63 @@
+dependencies:
+  espressif/button:
+    component_hash: 1f5297fe16f0ee988dbb14b6f4c91782fe2baf85025bb15cc1e0093edd3fb2ee
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 3.2.0
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.5.3
+  espressif/esp-nn:
+    component_hash: b32869798bdb40dec6bc99caca48cd65d42f8a9f506b9ab9c598a076f891ede9
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.2
+  espressif/esp-tflite-micro:
+    component_hash: ffe40b7edc5f407f82a55047b7269c036c25106ff830fb9b3231f3b7fecb4915
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.2.0
+  espressif/esp32-camera:
+    component_hash: e00e75c24164b5d097bf98f325938558697916a0cb6b68872b9927587b46882a
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 2.0.8
+  espressif/esp32_s3_eye:
+    component_hash: d0a57075768f6ab8fe7f92bafb4717fc6994c1c9fa336ecfa5acfade08a2f06c
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 3.0.4
+  espressif/esp_codec_dev:
+    component_hash: 1a3a2e518cd8b52e8796ec393a4050977f8f113599056faf085a02a57e194f86
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.1.0
+  espressif/esp_lvgl_port:
+    component_hash: b43dc04720d126cbfe14d53a84787e4c24b7bd7f15468e224c930ad3ffb32258
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.4.0
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.0.3
+  lvgl/lvgl:
+    component_hash: 948bff879a345149b83065535bbc4a026ce9f47498a22881e432a264b9098015
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 8.3.11
+manifest_hash: 0c20c74dfaea9498e93b301950273468094189071596f1ce02a2d38294941d66
+target: esp32s3
+version: 1.0.0
