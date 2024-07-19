@@ -1,2 +1,43 @@
-# ESP32s3_tflite_models_benchmark
-Running and benchmarking diffrent neural network models using tensorflow lite and esp-nn
+# Benchmarking NN models on ESP32-S3 and other platforms
+Running and benchmarking diffrent neural network models using tensorflow lite and esp-nn.
+
+Repo is founding on https://github.com/espressif/esp-tflite-micro/tree/master/examples/person_detection.
+
+
+# Benchmarking results
+
+| TFLite, int8 quantized, Inference_time, ms                  | Google Colab CPU  | S3 opt ratio       | Amlogic S905x3   | S3 opt ratio      | Allwinner H3 | S3 opt ratio | Raspberry pi 4 | S3 opt ratio | ESP32-S3 esp-nn | ESP32-S3 non opt |
+| ----------------------------------------------------------- | ----------------- | ------------------ | ---------------- | ----------------- | ------------ | ------------ | -------------- | ------------ | --------------- | ---------------- |
+| int8_NoActivation_reshape_mbnetv3_small_1.0_96x96.tflite    | 3,7               | 31,62162162        | 5,4              | 21,66666667       | 16,5         | 7,090909091  | 4              | 29,25        | 117             | 547              |
+| int8_NoActivation_reshape_mbnetv3_minim_0.35_96x96.tflite   | 1,75              | 30,85714286        | 2,35             | 22,9787234        | 7,17         | 7,531380753  | 1,75           | 30,85714286  | 54              | 188              |
+| int8_NoAct_mobilenetV2_0.35_96x96.tflite                    | 7,9               | 24,43037975        | 8,4              | 22,97619048       | 27,85        | 6,929982047  | 6,8            | 28,38235294  | 193             | 813              |
+| int8_NoAct_mobilenetV2_0.05_96x96.tflite                    | 5,3               | 24,33962264        | 5,8              | 22,24137931       | 19,07        | 6,764551652  | 4,7            | 27,44680851  | 129             | 458              |
+| int8_NoAct_mobilenetV1_0.35_96x96.tflite                    | 6,1               | 44,75409836        | 9                | 30,33333333       | 24           | 11,375       | 6,3            | 43,33333333  | 273             | 763              |
+| int8_NoAct_mobilenetV1_0.05_96x96.tflite                    | 0,9               | 35,55555556        | 1,84             | 17,39130435       | 4,695        | 6,815761448  | 1,41           | 22,69503546  | 32              | 48               |
+| int8_NoActivation_reshape_mbnetv3_minim_1.0_224x224.tflite  | 23                | 25,73913043        |                  | #DIV/0!           |              | #DIV/0!      |                | #DIV/0!      | 592             | 3151             |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+| CoreMark 1.0                                                | 19043,99162       | 31,6182199         | 7926,785328      | 13,16062549       | 3707,365299  | 6,155237494  | 7947,402644    | 13,19485586  | 602,310683      |                  |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+| CoreMark \* inference_time                                  |                   |                    |                  |                   |              |              |                |              |                 |                  |
+| int8_NoActivation_reshape_mbnetv3_small_1.0_96x96.tflite    | 70462,769         |                    | 42804,64077      |                   | 61171,52743  |              | 31789,61058    |              | 70470,34991     |                  |
+| int8_NoActivation_reshape_mbnetv3_minim_0.35_96x96.tflite   | 33326,98534       |                    | 18627,94552      |                   | 26581,80919  |              | 13907,95463    |              | 32524,77688     |                  |
+| int8_NoAct_mobilenetV2_0.35_96x96.tflite                    | 150447,5338       |                    | 66584,99676      |                   | 103250,1236  |              | 54042,33798    |              | 116245,9618     |                  |
+| int8_NoAct_mobilenetV2_0.05_96x96.tflite                    | 100933,1556       |                    | 45975,3549       |                   | 70699,45625  |              | 37352,79243    |              | 77698,07811     |                  |
+| int8_NoAct_mobilenetV1_0.35_96x96.tflite                    | 116168,3489       |                    | 71341,06795      |                   | 88976,76718  |              | 50068,63666    |              | 164430,8165     |                  |
+| int8_NoAct_mobilenetV1_0.05_96x96.tflite                    | 17139,59246       |                    | 14585,285        |                   | 17406,08008  |              | 11205,83773    |              | 19273,94186     |                  |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+| Keras, f32, Inference_time, ms                              | Google Colab CPU  | S3 opt ratio       | Amlogic S905x3   | S3 opt ratio      | Allwinner H3 | S3 opt ratio | Raspberry pi 4 | S3 opt ratio | ESP32-S3 esp-nn | ESP32-S3 non opt |
+| int8_NoActivation_reshape_mbnetv3_minim_1.0_224x224.tflite  | 100               | 5,92               |                  |                   |              |              |                |              | 592             | 3151             |
+| int8_NoActivation_reshape_mbnetv3_minim_0.35_224x224.tflite | 92                | 3,402173913        |                  |                   |              |              |                |              | 313             | 1182             |
+| int8_NoActivation_reshape_mbnetv3_small_1.0_96x96.tflite    | 110,37            | 1,060070671        | 430,4            | 0,2718401487      |              | #DIV/0!      |                |              | 117             | 547              |
+| int8_NoActivation_reshape_mbnetv3_minim_0.35_96x96.tflite   | 98,7              | 0,547112462        | 367,4            | 0,1469787697      |              | #DIV/0!      |                |              | 54              | 188              |
+| int8_NoAct_mobilenetV2_0.35_96x96.tflite                    |                   | #DIV/0!            |                  | #DIV/0!           |              | #DIV/0!      |                |              | 193             | 813              |
+| int8_NoAct_mobilenetV2_0.05_96x96.tflite                    |                   | #DIV/0!            |                  | #DIV/0!           |              | #DIV/0!      |                |              | 129             | 458              |
+| int8_NoAct_mobilenetV1_0.35_96x96.tflite                    |                   | #DIV/0!            |                  | #DIV/0!           |              | #DIV/0!      |                |              | 273             | 763              |
+| int8_NoAct_mobilenetV1_0.05_96x96.tflite                    |                   | #DIV/0!            |                  | #DIV/0!           |              | #DIV/0!      |                |              | 32              | 48               |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+|                                                             |                   |                    |                  |                   |              |              |                |              |                 |                  |
+| ESP32-S3                                                    | f32 TFLite esp-nn | f32 TFLite non opt | i8 TFLite esp-nn | i8 TFLite non opt | f32 TVM      |              |                |              |                 |                  |
+| int8_NoActivation_reshape_mbnetv3_small_1.0_96x96.tflite    | 1201              | 1261               | 117              | 547               | 602          |              |                |              |                 |
